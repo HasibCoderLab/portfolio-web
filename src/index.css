@@ -96,11 +96,19 @@ transform: rotate(360deg);
 
   }
 }
-/* ======== line clup -2*/
-.line-clamp2- {
+/* ======== line clamp -2*/
+.line-clamp-2 {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
+/* ======== line clamp -3*/
+.line-clamp-3{
+  display: -webkit-box;
+   -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
 } 
