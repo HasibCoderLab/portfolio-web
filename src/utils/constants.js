@@ -16,7 +16,13 @@
 
 
 
+ export const  ABOUTS_STATS= [
+        {  label:"Happy Clients" , value:"45+"},
+        {  label:"Code Commits" , value:"2.1K+"},
+        {  label:"Github Stars" , value:"6+"}
+       
 
+    ] 
 
 
 
