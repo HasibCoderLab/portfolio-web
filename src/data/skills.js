@@ -3,87 +3,84 @@ export const skills = [
     id: 1,
     name: "React.js",
     icon: "Code2",
-    level: "Expert",
-    experiences:"Year"
+    level: "Advanced",
+    experiences: "1+ Year",
   },
- {
+  {
     id: 2,
     name: "JavaScript",
     icon: "FileCode",
-    level: "",
-    experiences:""
-  },,
- {
+    level: "Advanced",
+    experiences: "2+ Years",
+  },
+  {
     id: 3,
     name: "TypeScript",
     icon: "FileCode",
-    level: "",
-    experiences:""
+    level: "Intermediate",
+    experiences: "1+ Year",
   },
   {
     id: 4,
     name: "Next.js",
     icon: "Zap",
-    level: "",
-    experiences:""
+    level: "Intermediate",
+    experiences: "1+ Year",
   },
-{
+  {
     id: 5,
-    name: "Tailwind Css",
+    name: "Tailwind CSS",
     icon: "Palette",
-    level: "",
-    experiences:""
+    level: "Advanced",
+    experiences: "1+ Year",
   },
   {
     id: 6,
     name: "Node.js",
     icon: "Server",
-    level: "Intermideat",
-    experiences:""
+    level: "Intermediate",
+    experiences: "6+ Months",
   },
-   {
+  {
     id: 7,
-    name: "Git & Github",
+    name: "Git & GitHub",
     icon: "GitBranch",
-    level: "",
-    experiences:""
+    level: "Advanced",
+    experiences: "2+ Years",
   },
-   {
+  {
     id: 8,
     name: "Redux",
-    icon: "DataBase",
-    level: "Intermideat",
-    experiences:""
+    icon: "Database",
+    level: "Intermediate",
+    experiences: "6+ Months",
   },
-   {
+  {
     id: 9,
-    name: "REST AIPs",
+    name: "REST APIs",
     icon: "Globe",
-    level: "",
-    experiences:""
+    level: "Intermediate",
+    experiences: "1+ Year",
   },
-   {
+  {
     id: 10,
     name: "Responsive Design",
-    icon: "SmartPhone",
-    level: "",
-    experiences:""
+    icon: "Smartphone",
+    level: "Advanced",
+    experiences: "2+ Years",
   },
-   {
+  {
     id: 11,
     name: "Canva",
-    icon: "Canva",
-    level: "",
-    experiences:""
+    icon: "Image",
+    level: "Intermediate",
+    experiences: "1+ Year",
   },
-   {
+  {
     id: 12,
     name: "Vite",
     icon: "Rocket",
-    level: "",
-    experiences:""
+    level: "Intermediate",
+    experiences: "6+ Months",
   },
-  
-  
-
 ];
