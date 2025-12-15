@@ -23,7 +23,7 @@
     overflow-x: hidden;
   }
 
-  /* custom scrollbar  */
+  /* ===== custom scrollbar ======= */
    ::--webkit-scrollbar{
 width: 10px;
    }
@@ -38,5 +38,11 @@ width: 10px;
     background: linear-gradient(180deg,#ABFF80, #5bc92e);
 
    }
+
+  /* ===== FireFox scrollbar ======= */
+*{
+scrollbar-width: thin;
+scrollbar-color: #6FE047 #0a0a0a;
+}
 
 }
