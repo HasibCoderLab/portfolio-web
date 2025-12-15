@@ -14,4 +14,12 @@
     font-family: var(--font-dispaly);
     scroll-behavior: smooth;
   }
+  body{
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #000000;
+    color: #ffffff;
+    overflow-x: hidden;
+  }
 }
