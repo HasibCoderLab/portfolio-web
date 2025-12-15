@@ -1,3 +1,15 @@
+export const  PERSONAL_INFO= {
+
+    name:"Mohammad Hasib Hasan",
+    title:"",
+    email:"coder.mohammadhasibhasan@gmail.com"
+}
+        
+
+
+       
+
+    
 
 
 
@@ -20,7 +32,7 @@ export const  STATS= [
 
        
 
-    ] 
+    ] ;
 
 
 
