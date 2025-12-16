@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import {Code,Menu,X} from "lucide-react"
+import { Code, Menu, X } from "lucide-react"
 import { scrollToSection, useScrollspy } from "../../hooks/useScrollSpy";
-import {NAV_LINKS ,PERSONAL_INFO } from "../../utils/constants"
+import { NAV_LINKS, PERSONAL_INFO } from "../../utils/constants"
 
 
 const Navbar = () => {
@@ -17,45 +17,52 @@ const Navbar = () => {
 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
-  }, []); 
+  }, []);
 
-  const handleNavClick = (sectionId) =>{
+  const handleNavClick = (sectionId) => {
     scrollToSection(sectionId);
     setIsMenuOpen(false)
   }
   return (
     <nav
-  className={`fixed top-0 left-0 right-0 z-1000 w-full py-4 transition-all duration-300 ${isScrolled 
-    ? 'bg-black/30 backdrop-blur-lg' 
-    : 'bg-transparent'
-  }`}
-  style={{ transform: 'translate3d(0, 0, 0)' }}
->
-  <div className="container mx-auto px-4">
-    <div className="flex items-center justify-between">
-      {/* লোগো সেকশন */}
-      <div className="flex items-center gap-4">
-        {/* লোগো আইকন বা টেক্সট */}
-        <code className="w-6 h-6 text-primary">
-          {/* এখানে আপনার লোগো আইকন বা SVG থাকবে */}
-        </code>
-        {/* আপনি চাইলে এখানে লোগোর নাম বা অন্য কিছু যুক্ত করতে পারেন */}
-      </div>
+      className={`fixed top-0 left-0 right-0 z-1000 w-full py-4 transition-all duration-300 ${isScrolled
+        ? 'bg-black/30 backdrop-blur-lg'
+        : 'bg-transparent'
+        }`}
+      style={{ transform: 'translate3d(0, 0, 0)' }}
+    >
+      <div className=''>
+        <div className=''>
 
-      {/* অন্যান্য ন্যাভিগেশন আইটেম / বাটন */}
-      <div>
-        <button
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          className="p-2" // আপনার প্রয়োজন অনুসারে ক্লাস যোগ করুন
-          aria-label="home"
-        >
-          {PERSONAL_INFO.name.split(' ')[0]}
-        </button>
-      </div>
-      
-    </div>
-  </div>
-</nav>  
-  )
-}
-export default Navbar
+          {/*  {logo } */}
+          <div className="flex items-center gap-4">
+
+            <Code className="w-6 h-6 text-primary" />
+            <button
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              className="p-2" // আপনার প্রয়োজন অনুসারে ক্লাস যোগ করুন
+              aria-label="home"
+            >
+              {PERSONAL_INFO.name.split(' ')[0]}
+            </button>
+          </div>
+          {/* DESKTOP Navigation */}
+          <nav className=''>
+            {NAV_LINKS.map((link) => {
+              <button
+                key={link.id}
+                onClick={() => handleNavClick(link.id)}
+                className={`text-base font-medium transition-all duration-300 ${activeSection === link.id
+                  ? 'text-white'
+                  : 'text-white / 70 hover:text-white'
+
+                  }`}
+              >
+                {link.label}
+              </button>
+            })}
+          </nav>
+
+          )
+
+          export default Navbar;
