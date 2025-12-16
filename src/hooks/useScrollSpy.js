@@ -30,4 +30,15 @@ export const useScrollspy = (sectionIds, offset = 100) => {
   }, [sectionIds, offset]);
 
   return   activeSection;
-}
+};
+//Smooth scroll to a section
+export const scrollToSection = (sectionId, offset = 80) => {
+  const section = document.getElementById(sectionId);
+  if (section) {
+    const top = section.offsetTop - offset;
+    window.scrollTo({
+      top,
+      behavior: 'smooth'
+    });
+  }
+};
