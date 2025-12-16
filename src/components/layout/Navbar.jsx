@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Code, Menu, X } from "lucide-react"
-import { scrollToSection, useScrollspy } from "../../hooks/useScrollSpy";
-import { NAV_LINKS, PERSONAL_INFO } from "../../utils/constants"
+import { scrollToSection, useScrollspy } from "../../hooks/useScrollSpy.js";
+import { NAV_LINKS, PERSONAL_INFO } from "../../utils/constants.js"
 
 
 const Navbar = () => {
@@ -31,8 +31,8 @@ const Navbar = () => {
         }`}
       style={{ transform: 'translate3d(0, 0, 0)' }}
     >
-      <div className=''>
-        <div className=''>
+      <div className='max-w-330 mx-auto px-5'>
+        <div className='flex items-center justify-between'>
 
           {/*  {logo } */}
           <div className="flex items-center gap-4">
@@ -40,27 +40,27 @@ const Navbar = () => {
             <Code className="w-6 h-6 text-primary" />
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="p-2" // আপনার প্রয়োজন অনুসারে ক্লাস যোগ করুন
+              className="text-2xl font-bold bg-linear-to-r from-primary via-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
               aria-label="home"
             >
-              {PERSONAL_INFO.name.split(' ')[0]}
+              {PERSONAL_INFO.name.split(' ')[1]}
             </button>
           </div>
           {/* DESKTOP Navigation */}
           <nav className=''>
-            {NAV_LINKS.map((link) => {
+            {NAV_LINKS.map(link => (
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
                 className={`text-base font-medium transition-all duration-300 ${activeSection === link.id
-                  ? 'text-white'
-                  : 'text-white / 70 hover:text-white'
-
+                    ? 'text-white'
+                    : 'text-white/70 hover:text-white'
                   }`}
               >
                 {link.label}
               </button>
-            })}
+            ))}
+
           </nav>
           {/* CAT Button */}
 
@@ -72,7 +72,7 @@ const Navbar = () => {
             </button>
           </div>
         </div>
-      </div> 
+      </div>
     </nav>
   )
 }
