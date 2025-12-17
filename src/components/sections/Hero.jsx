@@ -23,7 +23,7 @@ const Hero = () => {
                 </span>
               </div>
             </FadeIn>
-            <FadeIn delay={200}>
+            <FadeIn delay={100}>
               <h1 className="">
                 Building modern, scalable web applications with
               </h1>
@@ -44,6 +44,22 @@ const Hero = () => {
                   Get in Touch
                 </div>
               </button>
+            </FadeIn>
+
+            <FadeIn delay={400}>
+              <div className="">
+                {
+                  STATS.map((stat, index) => (
+                    <div key={index} className='' >
+                      <div className='' >
+                        {stat.value}
+                      </div>
+                      <p className=''> {stat.label} </p>
+                    </div>
+
+                  ))
+                }
+              </div>
             </FadeIn>
             )
 }
