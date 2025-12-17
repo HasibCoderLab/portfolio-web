@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react'
 
-const FadeIn = () => {
+const FadeIn = ({children , delay = 0 , duration =500  , threshold =0.1}) => {
   const [isVasible, setIsVasible] = useState(false);
   const elementRef = useRef(null);
   useEffect(() => {
@@ -27,7 +27,21 @@ const FadeIn = () => {
   },[threshold,isVasible]
   )
   return (
-    <div>FadeIn</div>
+    <div 
+    
+    ref={elementRef}
+    className={isVasible ? 'animate-fadeIn' : 'opacity-0'}
+    
+      style={{
+        animationDelay:isVasible ? `${delay}ms` :'0ms',
+        animationDuration: `${duration}ms`,
+      animationFillMode:'both'
+      }}
+    >
+
+
+
+    </div>
   )
 }
 
