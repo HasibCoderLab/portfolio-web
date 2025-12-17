@@ -40,7 +40,7 @@ const Navbar = () => {
             <Code className="w-6 h-6 text-primary" />
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="text-2xl font-bold bg-linear-to-r from-primary via-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity"
+              className="text-2xl font-bold bg-linear-to-r from-primary via-primary/50 to-primary/30 bg-clip-text text-transparent hover:opacity-80 transition-opacity cursor-pointer"
               aria-label="home"
             >
               {PERSONAL_INFO.name.split(' ')[1]}
@@ -52,7 +52,7 @@ const Navbar = () => {
               <button
                 key={link.id}
                 onClick={() => handleNavClick(link.id)}
-                className={`text-base font-medium transition-all duration-300 ${activeSection === link.id
+                className={`text-base font-medium transition-all duration-300 cursor-pointer ${activeSection === link.id
                   ? 'text-white'
                   : 'text-white/70 hover:text-white'
                   }`}
@@ -68,7 +68,7 @@ const Navbar = () => {
 
             <button
               onClick={() => handleNavClick('contact')}
-              className="px-7 py-3.5 bg-white text-[#212121] font-medium text-base rounded-[17px] border border-white hover:bg-white/90 transition-all duration-300"
+              className="px-7 py-3.5 bg-white text-[#212121] font-medium text-base rounded-[17px] cursor-pointer border border-white hover:bg-white/90 transition-all duration-300"
 
             >Hire Me
             </button>
@@ -96,7 +96,7 @@ const Navbar = () => {
               key={link.id}
               onClick={() => handleNavClick(link.id)}
               className={`block w-full text-left px-4 py-3 rounded-lg font-medium transition-all duration-300 ${activeSection === link.id
-                  ? "text-white bg-white/70 hover:bg-white/50"
+                  ? "text-white bg-white/70 hover:bg-white/50  cursor-pointer"
                   : "text-gray-300 hover:text-white hover:bg-white/20"
                 }`}
             >
