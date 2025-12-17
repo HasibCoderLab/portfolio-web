@@ -8,10 +8,16 @@ const FadeIn = () => {
     ([entry]) =>{
       //Trigger animation when enters viewport;
       if (entry.isIntersecting  && !isVasible) {
-        setIsVasible(true)
+        setIsVasible(true);
       }
+    },{
+      threshold:threshold,
+      rootMargin:'0px 0px -50px 0px' // trigger slightly before element
     }
-  )
+  );
+  if (elementRef.current)  {
+    observer.observe(elementRef.current)
+  }
  })
   return (
     <div>FadeIn</div>
