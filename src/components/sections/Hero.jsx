@@ -61,7 +61,13 @@ const Hero = () => {
                 }
               </div>
             </FadeIn>
-            )
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  )
 }
 
-            export default Hero
+export default Hero
