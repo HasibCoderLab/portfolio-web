@@ -1,8 +1,17 @@
 import React from 'react'
-
-const ScrollReveal = () => {
+import { useScrollReveal } from "../../hooks/useScrollReveal";
+const ScrollReveal = (
+  children, 
+  animation = 'fadeUp',
+  delay = 0, 
+  duration = 700,
+  
+) => {
+  const {ref , isVasible} = useScrollReveal({   threshold : 0.1 })
   return (
-    <div>ScrollReveal</div>
+    <div>
+      
+    </div>
   )
 }
 
