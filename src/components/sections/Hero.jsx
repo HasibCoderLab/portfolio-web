@@ -72,8 +72,8 @@ const Hero = () => {
 
 
           <FadeIn delay={200}>
-            <div className="">
-              <div className="">
+            <div className="relativer">
+              <div className="relative overflow-hidden rounded-2xl">
                 <div className="">
                   <div className=""></div>
                 </div>
@@ -82,7 +82,7 @@ const Hero = () => {
 
                 {/* image Container */}
                 <div className="">
-                  <img src="" alt=""
+                  <img src="/developer.png" alt="developer-pic"
                     className=""
 
                   />
