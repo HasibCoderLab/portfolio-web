@@ -1,6 +1,6 @@
 export const PERSONAL_INFO = {
   name: "Mohammad Hasib Hasan",
-  title: "Frontend Developer",
+  title: "Frontend Developer  </>| Full-Stack Next.js Developer",
   email: "coder.mohammadhasibhasan@gmail.com",
   location: "Rajshahi, Bangladesh",
   tagline: "Building modern, fast, and user-friendly web experiences",

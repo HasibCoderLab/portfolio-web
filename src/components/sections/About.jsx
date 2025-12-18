@@ -23,18 +23,19 @@ const About = () => {
   ];
 
 
-  return <section id="about" className="" >
+  return <section id="about" className="relative py-20 overflow-hidden bg-black" >
     <RadialGradientBackground variant="about" />
-    <div className="">
 
+    <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       {/*Main grid  */}
+
       <div className="">
         {/*Left column Container     */}
         <div className="">
           <div className="">
             <FadeIn delay={60}>
               <div className="">
-                <Code2 className />
+                <Code2 className ="" />
                 <span className="">
 
                   Full-Stack Next.js Developer
@@ -69,7 +70,7 @@ const About = () => {
           <FadeIn delay={300}>
             <div className="">
               {
-                ABOUT_STATS.bio.map((stat, index) => (
+                ABOUT_STATS.map((stat, index) => (
                   <div key={index}
                     className="">
 
@@ -80,7 +81,7 @@ const About = () => {
                     </div>
                     <p
                       className="">
-                      {stat.lable}
+                      {stat.label}
                     </p>
                   </div>
 
@@ -92,12 +93,16 @@ const About = () => {
             <button onClick={() => window.open(PERSONAL_INFO.resume, '_blank')}
               className=""
             >
-              <Download className="" />
+              <Download className="w-4" />
 
-              Download  Resume
+              Download  Resume.
             </button>
           </FadeIn>
-    
+        </div>
+      </div>
+    </div>
+  </section>
+
 }
 
-          export default About
+export default About
