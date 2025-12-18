@@ -88,7 +88,15 @@ const About = () => {
             </div>
           </FadeIn>
           {/* 4th  FadeIn */}
+          <FadeIn delay={400}>
+            <button onClick={() => window.open(PERSONAL_INFO.resume, '_blank')}
+              className=""
+            >
+              <Download className="" />
 
+              Download  Resume
+            </button>
+          </FadeIn>
     
 }
 
