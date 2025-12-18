@@ -86,9 +86,9 @@ const About = () => {
               <div className="col-span-2 relative group">
                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
 
-                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300">
+                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
                   <div className="flex items-start gap-4">
-                    <div className="p-3 bg-primary/10 rounded-xl w-fit">
+                    <div className="p-3 bg-primary/10 rounded-xl w-fit  mb-4">
                       <Code2 className="w-6 h-6 text-primary" />
                     </div>
                     {/*  */}
@@ -106,7 +106,7 @@ const About = () => {
                 <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
 
                 <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
-                  <div className="p-3 bg-primary/10 rounded-xl w-fit">
+                  <div className="p-3 bg-primary/10 rounded-xl w-fit  mb-4">
                     <Sparkles className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-base font-semibold text-white mb-2">Clean Code</h3>
@@ -115,15 +115,19 @@ const About = () => {
               </div>
 
               {/* for Download icon  */}
-              <div className="flex items-start gap-4">
-                <div className="p-3 bg-primary/10 rounded-xl">
-                  <Download className="w-6 h-6 text-primary" />
-                </div>
-                <div>
-                  <h3>Performance</h3>
-                  <p>Optimization for speed and efficiency in every project.</p>
+              <div className="relative group">
+                <div className="absolute inset-0 bg-linear-to-br from-primary/10 to-primary/5 rounded-2xl blur-xl opacity-50 group-hover:opacity-75 transition-opacity duration-300"></div>
+
+                <div className="relative bg-white/5 border border-white/10 rounded-2xl p-6 hover:border-primary/30 transition-all duration-300 h-full">
+                  <div className="p-3 bg-primary/10 rounded-xl w-fit mb-4">
+                    <Download className="w-6 h-6 text-primary" />
+                  </div>
+                  <h3 className="text-base font-semibold text-white mb-2">Clean Code</h3>
+                  <p className="text-sm text-white/70 leading-relaxed">React, Next.js, TypeScript, Tailwind CSS, and other modern web technologies.</p>
                 </div>
               </div>
+
+              {/* ===============     ========================== */}
 
               <div className="grid grid-cols-3 gap-4 text-center">
                 <div>
