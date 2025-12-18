@@ -41,7 +41,8 @@ const Hero = () => {
                 onClick={() => scrollToSection('contact')}
                 className="inline-flex items-center gap-0 mb-12 group:"
               >
-                <div className="relative z-10 bg-white text-[#212121] rounded-[17px] px-[26px] py-[13px] text-base ">
+                <div className="relative z-10 bg-white text-[#212121] rounded-[17px] px-[26px] py-[13px] text-base font-medium border border-white cursor-pointer
+                 ">
 
                   Get in Touch
                 </div>
@@ -49,14 +50,16 @@ const Hero = () => {
             </FadeIn>
 
             <FadeIn delay={400}>
-              <div className="">
+              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-full">
                 {
                   STATS.map((stat, index) => (
-                    <div key={index} className='' >
-                      <div className='' >
+                    <div key={index} className='text-left border-r border-white/50 pr-10 last:border-r-0' >
+                      <div className='text-2xl font-normal text-primary md-[8px] font-mono' >
                         {stat.value}
                       </div>
-                      <p className=''> {stat.label} </p>
+                      <p className=''> {
+                      stat.label}
+                       </p>
                     </div>
 
                   ))
