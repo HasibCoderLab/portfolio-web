@@ -58,7 +58,7 @@ const About = () => {
                 {
                   PERSONAL_INFO.bio.map((paragraph, index) => (
                     <p key={index}
-                      className="">
+                      className="text-base text-white/70 leading-relaxed">
                       {paragraph}
                     </p>
                   ))}

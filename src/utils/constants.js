@@ -4,14 +4,14 @@ export const PERSONAL_INFO = {
   email: "coder.mohammadhasibhasan@gmail.com",
   location: "Rajshahi, Bangladesh",
   tagline: "Building modern, fast, and user-friendly web experiences",
-  bio: [
-  "Frontend Developer with a strong passion for building modern, responsive, and user-focused web applications that deliver real value.",
-  "Experienced in React, Next.js, TypeScript, and Tailwind CSS, with a solid understanding of component-based architecture and state management.",
-  "Focused on writing clean, maintainable, and scalable code while ensuring high performance, accessibility, and cross-browser compatibility.",
-  "Skilled in translating UI/UX designs into pixel-perfect, interactive interfaces with attention to detail.",
-  "Enjoys solving real-world problems through code and continuously learning new technologies to grow as a developer.",
-  "Driven by curiosity, consistency, and the goal of becoming better with every project built.",
+bio: [
+  "I am a Frontend Developer with a strong interest in building web applications that work efficiently and reliably. I focus on writing clean and organized code that is easy to maintain and understand.",
+
+  "I have experience with React, Next.js, TypeScript, Tailwind CSS, and other modern web technologies. I enjoy solving problems logically and making sure everything works correctly, from small features to complex functionality.",
+
+  "I like learning new technologies and improving my skills every day. My goal is to create web applications that are fast, reliable, and built on a solid logical foundation, while continuously growing as a developer.",
 ],
+
 
 };
 
