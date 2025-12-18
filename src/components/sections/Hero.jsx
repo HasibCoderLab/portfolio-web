@@ -133,11 +133,12 @@ const Hero = () => {
 
       {/* Scroll Indicstor */}
       <button
-      onClick={() => scrollToSection('about')}
-className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce"
+        onClick={() => scrollToSection('about')}
+        className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce cursor-pointer z-50"
       >
-        <ChevronDown className="w-8 h-8 text-primary cursor-pointer" />
+        <ChevronDown className="w-8 h-8 text-primary" />
       </button>
+
     </section >
 
   )
