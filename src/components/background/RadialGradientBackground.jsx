@@ -62,6 +62,13 @@ const RadialGradientBackground = ({ variant = 'hero', gradients = [] }) => {
     ]
 
   }
+
+  const activeGradients = variant ==='custom' ? gradients : varients[variant] ||varients.hero;
+  const generateGradients  = (colors) =>{
+    const colorStops = colors.map(({color,stop}) => `${color} ${stop}`).join(' ,');
+    return `radial-gradient(circle ar center, transparent 0%  transparent 30%, ${colorStops} , transparent 60% , transparent 100%) `;
+  }
+
   return (
     <div>
       RadialGradientBackground
