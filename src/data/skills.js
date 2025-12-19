@@ -83,4 +83,47 @@ export const skills = [
     level: "Intermediate",
     experiences: "6+ Months",
   },
+  // New Backend Skills
+  {
+    id: 13,
+    name: "Express.js",
+    icon: "Layers",
+    level: "Basic",
+    experiences: "6+ Months",
+  },
+  {
+    id: 14,
+    name: "MongoDB",
+    icon: "Database",
+    level: "Basic",
+    experiences: "6+ Months",
+  },
+  {
+    id: 15,
+    name: "JWT",
+    icon: "Shield",
+    level: "Basic",
+    experiences: "6+ Months",
+  },
+  {
+    id: 16,
+    name: "Next.Auth",
+    icon: "KeyRound",
+    level: "Basic",
+    experiences: "6+ Months",
+  },
+  {
+    id: 17,
+    name: "Mongoose",
+    icon: "DatabaseZap",
+    level: "Basic",
+    experiences: "6+ Months",
+  },
+  {
+    id: 18,
+    name: "API Development",
+    icon: "Workflow",
+    level: "Basic",
+    experiences: "1+ Year",
+  },
 ];
