@@ -26,6 +26,27 @@ const Skills = () => {
         ].filter(Boolean),
     };
 
+
+    // Get proficiency percentage
+    const getProficiencyLevel = (level) => {
+        const levels = {
+            'Expert': 95,
+            'Advanced': 80,
+            'Intermediate': 65,
+        };
+        return levels[level] || 50;
+    };
+
+    // Get level color
+    const getLevelColor = (level) => {
+        const colors = {
+            'Expert': 'text-[#8DFF69] bg-[#8DFF69]/20 border-[#8DFF69]/30',
+            'Advanced': 'text-cyan-400 bg-cyan-500/20 border-cyan-500/30',
+            'Intermediate': 'text-emerald-400 bg-emerald-500/20 border-emerald-500/30',
+        };
+        return colors[level] || 'text-gray-400 bg-gray-500/20 border-gray-500/30';
+    };
+
     return (
         <div>Skills</div>
     )
