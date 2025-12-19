@@ -187,25 +187,29 @@ const About = () => {
                     <div className="">
                       {skill.name}
                     </div >
-
-
-                    )
-}
-
-
-
-
-
-
-
-
-                    {/*  */}
+                    {/* Hover Glow Effect */}
+                    <div className=""></div>
                   </div >
-        </section >
-            );
+
+                ))
+              }
+
+
+            </div >
+          </div >
+
+        </FadeIn>
+
+
+
+
+        {/*  */}
+      </div >
+    </section >
+  );
 };
 
-            export default About;
+export default About;
 
 
 
