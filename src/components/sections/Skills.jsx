@@ -46,15 +46,22 @@ const Skills = () => {
     };
 
     return (
-        <section id="skills" className="py-20">
-            <div className="container mx-auto px-4">
+        <section id="skills" className="relative py-20 bg-black overflow-hidden">
+            <div className="absolute inset-0 overflow-hidden">
+                <div className="absolute top-1/4 top-0 w-96 h-96 bg-primary-10 -rounded-full  blur-3xl opacity-50 " />
+                <div className="absolute bottom-1/4 right-0 w-96  h-96 bg-primary-10 -rounded-full  blur-3xl opacity-50 " />
+
+            </div>
+
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <FadeIn delay={100}>
                     <div className="text-center mb-16">
-                        <div className="flex items-center justify-center gap-2 mb-4">
-                            <Icons.Sparkles className="text-yellow-400" />
-                            <span className="text-sm uppercase tracking-widest text-gray-400">My Expertise</span>
+                        <div className="inline-flex items-center  gap-2 px-4 py-2 bg-primary/10 border border-primary/30 rounded-full mb-6">
+                            <Icons.Sparkles className="w-4 h-4 text-primary" />
+                            <span className="text-sm text-primary font-medium">My Expertise</span>
                         </div>
-                        <h2 className="text-4xl font-bold mb-4">Skills & Technologies</h2>
+                        <h2 className="text-4xl text-white  font-bold mb-4">Skills & Technologies</h2>
+                    <p className=""></p>
                     </div>
                 </FadeIn>
 
@@ -62,7 +69,7 @@ const Skills = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {Object.entries(skillCategories).map(([category, categorySkills], categoryIndex) => (
                         <FadeIn key={category} delay={categoryIndex * 100}>
-                            <div className="p-6 rounded-2xl bg-gray-900/50 border border-white/10">
+                            <div className="p-6 rounded-2xl  p-6 bg-gray-900/50 border border-white/10 hover:border-primary-30 transition-all duration-300">
                                 <h3 className="text-xl font-semibold mb-6">{category}</h3>
 
                                 {/* Skills List */}
@@ -82,15 +89,15 @@ const Skills = () => {
                                                             <div className="text-xs text-gray-500">{skill.experiences}</div>
                                                         </div>
                                                     </div>
-                                                    <span className={`text-[10px] px-2 py-0.5 rounded-full border ${getLevelColor(skill.level)}`}>
+                                                    <span className={`text-[10px] px-2 py-0.5 rounded-full border " ${getLevelColor(skill.level)}`}>
                                                         {skill.level}
                                                     </span>
                                                 </div>
 
                                                 {/* Progress Bar */}
                                                 <div className="h-1.5 w-full bg-gray-800 rounded-full overflow-hidden">
-                                                    <div 
-                                                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-1000"
+                                                    <div
+                                                        className="h-full bg-gradient-to-r from-cyan-500 to-blue-500 transition-all duration-1000 "
                                                         style={{ width: `${proficiency}%` }}
                                                     ></div>
                                                 </div>
@@ -100,9 +107,12 @@ const Skills = () => {
                                 </div>
                             </div>
                         </FadeIn>
+                        
                     ))}
+                    </div>
                 </div>
-            </div>
+
+
         </section>
     );
 };
