@@ -27,7 +27,8 @@ const About = () => {
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Main grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-20">
-          {/* Left column */}
+          {/* Left column -content*/}
+
           <div className="flex flex-col gap-12">
             <div className="flex flex-col gap-8">
               <FadeIn delay={60}>
@@ -80,7 +81,8 @@ const About = () => {
             </FadeIn>
           </div>
 
-          {/* Right Column */}
+          {/* Right Column  infor Grid */}
+
           <FadeIn delay={200}>
             <div className="grid grid-cols-2 gap-4">
               <div className="col-span-2 relative group">
@@ -163,15 +165,47 @@ const About = () => {
 
             {/*  */}
           </FadeIn>
-
-          {/*  */}
         </div>
-      </div >
-    </section >
-  );
+
+
+        {/* ==== Skills Grid Section  */}
+        <FadeIn delay={500}>
+          <div className="">
+            <div className="">
+              <h3 className=""> Tech Stackk & Experience </h3>
+              <p className=""> Technology I work  with to build amazing product</p>
+            </div >
+
+            <div className="">
+              {
+                skills.map((skill, index) => (
+                  <div
+                    key={index}
+                    className=""
+                  >
+                    <skill.icon className="" />
+                    <div className="">
+                      {skill.name}
+                    </div >
+
+
+                    )
+}
+
+
+
+
+
+
+
+
+                    {/*  */}
+                  </div >
+        </section >
+            );
 };
 
-export default About;
+            export default About;
 
 
 
