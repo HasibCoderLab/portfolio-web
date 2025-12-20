@@ -67,7 +67,7 @@ export const projects = [
   },
 ];
 
-export const category = [
+export const categories= [
   "All",
   "JavaScript",
   "TypeScript",
