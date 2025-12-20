@@ -13,6 +13,17 @@ const Projects = () => {
     ?projects
     :projects.filter(project => project.catagory === activeCatagory);
 
+
+    // Reset carousel when catagory changes
+
+    const handleCatagoryChange =  (catagory) =>{
+        setActiveCatagory(catagory);
+        setCurrentIndex(0);
+        if(scrollContainerRef.current){
+                scrollContainerRef.current.scrollTo({left:0,behavior:'smoth'});
+        }
+    }
+
   return (
     <div>Projects</div>
   )
