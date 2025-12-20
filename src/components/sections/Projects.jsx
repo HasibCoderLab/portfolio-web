@@ -56,27 +56,29 @@ const Projects = () => {
     };
 
     return (
-        <section id="projects" className="py-20 relative overflow-hidden">
+        <section id="projects" className=" relative py-20  bg-black overflow-hidden">
             {/* Background elements */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/5 to-transparent" />
+            <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute top-1/3 right-0 w-96 h-96 bg-primary/20 opacity-20 rounded-full blur-3xl " />
+                <div className="absolute buttom-1/3 left-0 w-96 h-96 bg-primary/20 opacity-20 rounded-full blur-3xl" />
+                <div className="absolute top-1/2 right-1/3-0 w-96 h-96 bg-primary/10 opacity-20 rounded-full blur-3xl" />
             </div>
 
-            <div className="container mx-auto px-4 relative z-10">
+            <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <FadeIn delay={0}>
-                    <div className="text-center max-w-2xl mx-auto mb-12">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-sm mb-4">
-                            <Briefcase className="w-4 h-4" />
-                            <span className="font-medium">My Work</span>
+                    <div className="text-center  mb-12">
+                        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary  text-primary text-sm mb-4">
+                            <Briefcase className="w-4 h-4 text-primary" />
+                            <span className="text-sm font-medium text-primary">My Work</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Projects</h2>
-                        <p className="text-white/60 text-lg">Showcase my best work and achievements</p>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-4">Featured Projects</h2>
+                        <p className="text-white/60 text-lg  max-w-2xl mx-auto ">Showcase my best work and achievements</p>
                     </div>
                 </FadeIn>
 
                 {/* Category Filter */}
                 <FadeIn delay={0.2}>
-                    <div className="flex flex-wrap justify-center gap-3 mb-12">
+                    <div className="flex flex-wrap justify-center gap-3 mb-16">
                         {categories.map((category) => (
                             <button
                                 key={category}
@@ -95,8 +97,13 @@ const Projects = () => {
                                 
                                 <div className="relative flex items-center gap-2">
                                     {categoryIcons[category] && React.createElement(categoryIcons[category], { className: 'w-4 h-4' })}
-                                    <span>{category}</span>
+                                    <span className="text-sm">{category}</span>
                                 </div>
+                                {
+                                    activeCategory === category && (
+                                        <div className="absolute  inset-0 rounded-full bg-primary blur-xl opacity-50 -z-10 cursor-pointer" />
+                                    )
+                                }
                             </button>
                         ))}
                     </div>
@@ -104,7 +111,7 @@ const Projects = () => {
 
                 {/* Project Carousel */}
                 <FadeIn delay={0.4}>
-                    <div className="relative group">
+                    <div className="relative ">
                         <div 
                             className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth"
                             ref={scrollContainerRef}
@@ -114,7 +121,7 @@ const Projects = () => {
                                 {filteredProjects.map((project) => (
                                     <div
                                         key={project.id}
-                                        className="w-[300px] md:w-[350px] flex-shrink-0 snap-start"
+                                        className="w-full md:w-[calc(50%-12px)] lg:md:w-[calc(33.333%-16px)] flex-shrink-0 snap-start"
                                     >
                                         <ProjectCard project={project} />
                                     </div>
@@ -128,27 +135,30 @@ const Projects = () => {
                                 <button
                                     onClick={prevSlide}
                                     disabled={currentIndex === 0}
-                                    className={`absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                                    className={`absolute top-1/2 left-0 -translate-y-1/2 -translate-x-2
+                                        lg:-translate-x-4  w-10 h-10 lg:w-12lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20  flex items-center justify-center transition-all duration-300 disabled:cursor-not-allowed  z-10  ${
                                         currentIndex === 0 
                                         ? 'bg-white/5 text-white/20 cursor-not-allowed' 
-                                        : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
+                                          : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
                                     }`}
                                     aria-label="Previous projects"
                                 >
-                                    <ChevronLeft className="w-5 h-5" />
+                                    <ChevronLeft className="w-5 h-5 text-white" />
                                 </button>
 
                                 <button
                                     onClick={nextSlide}
                                     disabled={currentIndex >= filteredProjects.length - 3}
-                                    className={`absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${
+                                    className={`absolute  top-1/2 right-0 -translate-y-1/2 translate-x-2
+                                        lg:translate-x-4 flex items-center justify-center   w-10 h-10 lg:w-12lg:h-12 bg-white/10 backdrop-blur-sm border border-white/20 rounded-full hover:bg-white/20  transition-all duration-300 
+                                        disabled:opacity-50  disabled:cursor-not-allowed  z-10 ${
                                         currentIndex >= filteredProjects.length - 3
                                         ? 'bg-white/5 text-white/20 cursor-not-allowed'
                                         : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
                                     }`}
                                     aria-label="Next projects"
                                 >
-                                    <ChevronRight className="w-5 h-5" />
+                                    <ChevronRight className="w-5 h-5 text-white" />
                                 </button>
                             </>
                         )}
