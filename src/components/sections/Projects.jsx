@@ -64,8 +64,50 @@ const Projects = () => {
 
 
     return (
-        <div>Projects</div>
-    )
+        <section id="projects" className="" >
+            <div className="">
+                <div className="" />
+                <div className="" />
+                <div className="" />
+
+            </div>
+
+            <div className="">
+                <FadeIn delay={0}>
+                    <div className="">
+                        <div className="">
+                            <Briefcase className="" />
+                            <span className="">My Work</span>
+                        </div>
+                        <h2 className="">Featured Projects</h2>
+                        <p className="">Showcase my best work and achievements </p>
+                    </div>
+                    <FadeIn />
+
+
+                    {/* Category Filter */}
+                    < FadeIn delay={100}>
+                        <div className="">
+                            {
+                                categories.map((category) => (
+                                    <button
+                                        key={category}
+                                        onClick={() => handleCategoryChange(category)}
+                                        className={`group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${activeCategory === category
+                                            ? 'text-white'
+                                            : 'text-white/30 hover:text-white'
+                                            }`}
+                                    >
+                                        <div className={`absolute inset-0 rounded-full transition-all dutarion-300 ${activeCategory === category
+                                                ? 'bg-primary/10 opacity-100'
+                                                : 'bg-white/5 border border-white/10 hover:text-white  group hover:bg-white/10'
+                                            }`}></div>
+                                    </button>
+                                ))
+                            }
+                        </div>
+                    </FadeIn>
+                    )
 }
 
-export default Projects
+                    export default Projects
