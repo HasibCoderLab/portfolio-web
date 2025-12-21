@@ -25,10 +25,24 @@ const Contact = () => {
         e.preventDefaul()
 
         if (!formData.name || !formData.email || !formData.message) {
-            setStatus({type:'error',message:'please fill in all fields'})
+            setStatus({ type: 'error', message: 'please fill in all fields' })
             return
         }
     }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+        setStatus({ type: 'error', message: 'Please enter a valid email' });
+        return;
+    }
+
+    setStatus({ type: 'success', message: 'Message sent successfully!' });
+    setFormData({ name: '', email: '', message: '' });
+
+    setTimeout(() => setStatus({ type: '', message: '' }), 5000);
+
+
+
 
     return (
         <div>Contact</div>
