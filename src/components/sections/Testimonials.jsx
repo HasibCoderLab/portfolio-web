@@ -1,243 +1,157 @@
 import React, { useState, useRef } from "react";
-import {
-    Quote,
-    Star,
-    ChevronLeft,
-    ChevronRight,
-} from "lucide-react";
-import { testimonials } from "../../data/testimonials";
+import { Quote, Star, ChevronLeft, ChevronRight } from "lucide-react";
+import { testimonials } from "../../data/testimonials"; // Ensure your data structure matches
 import FadeIn from "../animations/FadeIn";
-import ProjectCard from "../ui/Card";
 
-const Projects = () => {
-
-
-
+const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
     const scrollContainerRef = useRef(null);
 
+    const testimonialStats = [
+        { value: '3x', label: 'Faster Delivery' },
+        { value: '100%', label: 'On-Time' },
+        { value: '5*', label: 'Avg Rating' },
+    ];
 
     const scrollToIndex = (index) => {
+        if (index < 0 || index >= testimonials.length) return;
         setCurrentIndex(index);
         if (scrollContainerRef.current) {
-            const cardWidth = scrollContainerRef.current.offsetWidth;
-
+            const cardWidth = 350 + 24; // Card width + gap
             scrollContainerRef.current.scrollTo({
                 left: cardWidth * index,
                 behavior: 'smooth'
             });
-        };
+        }
     };
 
-    const testimonials = () => {
-
-        const newIndex = Math.min(currentIndex + 1) % testimonials.length;
-        scrollToIndex(newIndex);
+    const nextTestimonial = () => {
+        const next = (currentIndex + 1) % testimonials.length;
+        scrollToIndex(next);
     };
 
-    const prevTimonial = () => {
-        const newIndex = Math.max(currentIndex - 1 + testimonials.length) % testimonials.length;
-        scrollToIndex(newIndex);
+    const prevTestimonial = () => {
+        const prev = (currentIndex - 1 + testimonials.length) % testimonials.length;
+        scrollToIndex(prev);
     };
 
-    const testimonialStats = [
-        { value: '3x', label: 'Faster Delivary' },
-        { value: '3x', label: 'Faster Delivary' },
-        { value: '3x', label: 'Faster Delivary' },
-        { value: '100%', label: 'on-Time Delivary' },
-        { value: '5*', label: 'Average Rating' },
-
-    ]
-
-};
-
-
-const Testimonials = () => {
     return (
-        <section id="testimonial" className="py-20 relative overflow-hidden">
-            {/* Background elements */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-primary/5 to-transparent" />
-            </div>
+        <section id="testimonial" className="py-24 relative overflow-hidden bg-[#050505] text-white">
+            {/* Ambient Background Glows */}
+            <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-primary/20 blur-[120px] rounded-full opacity-50" />
+            <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-blue-600/10 blur-[120px] rounded-full opacity-50" />
 
             <div className="container mx-auto px-4 relative z-10">
                 <FadeIn delay={0}>
-                    <div className="text-center max-w-2xl mx-auto mb-12">
-                        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-primary text-sm mb-4">
-                            <Quote className="w-4 h-4" />
-                            <span className="font-medium">Testimonials</span>
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-primary text-sm mb-6 backdrop-blur-md">
+                            <Quote className="w-4 h-4 fill-primary/20" />
+                            <span className="font-semibold tracking-wider uppercase text-xs">Testimonials</span>
                         </div>
-                        <h2 className="text-3xl md:text-4xl font-bold mb-4">Trused by  forwade-thiking teams</h2>
-                        <p className="text-white/60 text-lg">Empowering clients with logic , high-quality</p>
+                        <h2 className="text-4xl md:text-5xl font-bold mb-6 tracking-tight">
+                            Trusted by <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-400">forward-thinking</span> teams
+                        </h2>
+                        <p className="text-white/50 text-lg leading-relaxed">
+                            Empowering clients with logic, high-quality code, and seamless digital experiences.
+                        </p>
                     </div>
                 </FadeIn>
 
-                {/* Category Filter */}
-                {/* <FadeIn delay={0.2}>
-                     <div className="flex flex-wrap justify-center gap-3 mb-12">
-                         {categories.map((category) => (
-                             <button
-                                 key={category}
-                                 onClick={() => handleCategoryChange(category)}
-                                 className={`group relative px-6 py-3 rounded-full font-medium transition-all duration-300 ${
-                                     activeCategory === category
-                                         ? 'text-white'
-                                         : 'text-white/60 hover:text-white'
-                                 }`}
-                             >
-                                 <div className={`absolute inset-0 rounded-full transition-all duration-300 ${
-                                     activeCategory === category
-                                         ? 'bg-primary/20 border-primary/50'
-                                         : 'bg-white/5 border border-white/10 group-hover:bg-white/10'
-                                 }`} />
-                                 
-                                 <div className="relative flex items-center gap-2">
-                                     {categoryIcons[category] && React.createElement(categoryIcons[category], { className: 'w-4 h-4' })}
-                                     <span>{category}</span>
-                                 </div>
-                             </button>
-                         ))}
-                     </div>
-                 </FadeIn> */}
+                {/* Main Carousel Wrapper */}
+                <div className="relative group max-w-6xl mx-auto">
+                    
+                    {/* Navigation Buttons - Hidden on Mobile */}
+                    <button 
+                        onClick={prevTestimonial}
+                        className="absolute -left-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 backdrop-blur-xl hidden md:flex group-hover:left-[-12px]"
+                    >
+                        <ChevronLeft className="w-6 h-6" />
+                    </button>
 
-                {/* Project Carousel */}
-                <FadeIn delay={100}>
-                    <div className="relative group">
-                        <div
-                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth"
-                            ref={scrollContainerRef}
-                            style={{ scrollSnapType: 'x mandatory' }}
-                        >
-                            <div className="flex gap-6">
-                                {testimonials.map((testimonial, index) => (
-                                    <div
-                                        key={testimonial.id}
-                                        className="w-[300px] md:w-[350px] flex-shrink-0 snap-start"
-                                        style={{ scrollSnapAlign: 'start' }}
-                                    >
-                                        <div className="">
-                                            <div className="">
+                    <button 
+                        onClick={nextTestimonial}
+                        className="absolute -right-6 top-1/2 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all duration-300 backdrop-blur-xl hidden md:flex group-hover:right-[-12px]"
+                    >
+                        <ChevronRight className="w-6 h-6" />
+                    </button>
 
-                                                {/* Image section */}
-                                                <div className="">
-                                                    <div className="">
-                                                        <img
-                                                            src={testimonial.image}
-                                                            alt={testimonial.name}
-                                                            className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                                                        />
+                    {/* Scroll Container */}
+                    <div
+                        className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                        ref={scrollContainerRef}
+                    >
+                        {testimonials.map((testimonial, index) => (
+                            <div
+                                key={testimonial.id || index}
+                                className="w-[320px] md:w-[400px] flex-shrink-0 snap-center"
+                            >
+                                <div className="h-full p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-sm hover:bg-white/[0.06] transition-all duration-500 group/card relative overflow-hidden">
+                                    
+                                    {/* Glass Highlight Effect */}
+                                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-primary/40 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity" />
 
-                                                        {/* Start Badge Overlar */}
-                                                        <div className="">
-                                                            <div className="">
-                                                                <div className="">
-                                                                    <div className="">
-                                                                        {testimonialStats[index]?.value}
-
-                                                                    </div>
-                                                                    <div className="">
-                                                                        <div className="">
-                                                                            {testimonialStats[index]?.label}
-
-                                                                        </div>
-                                                                        {/* ))} */}
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-
-                                                    <div className="">
-
-                                                        {/* Quote */}
-                                                        <div className="">
-                                                            <Quote className="w-4 h-4" />
-                                                            <p className="">
-                                                                "{testimonial.quote}"
-                                                            </p>
-
-                                                        </div>
-                                                        {/* Role */}
-                                                        <div className="">
-                                                            <div>
-                                                                {testimonial.name}
-                                                            </div>
-                                                            <div className="">
-
-                                                                {testimonial.role} , {testimonial.institution}
-                                                            </div>
-                                                        </div>
-                                                        <div className="">
-                                                            {
-                                                                [...Array(testimonial.rating)].map((_, i) => (
-                                                                    <Star key={i} className="" />
-                                                                ))
-                                                            }
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                    {/* Header: Profile & Rating */}
+                                    <div className="flex justify-between items-start mb-8">
+                                        <div className="relative">
+                                            <div className="w-16 h-16 rounded-2xl overflow-hidden ring-2 ring-primary/20 ring-offset-4 ring-offset-transparent">
+                                                <img
+                                                    src={testimonial.image}
+                                                    alt={testimonial.name}
+                                                    className="w-full h-full object-cover"
+                                                />
+                                            </div>
+                                            <div className="absolute -bottom-2 -right-2 bg-primary p-1.5 rounded-lg">
+                                                <Quote className="w-3 h-3 text-black fill-current" />
                                             </div>
                                         </div>
-                                        ))}
-
-
-
-
-                                        {/*  */}
-                                        <div className="">
-                                            {
-                                                testimonials.map((_, index) => (
-                                                    <button
-                                                        onClick={() => scrollToIndex(index)}
-                                                        className={`transition-all duration-300 ${index === currentIndex
-                                                            ? 'bg-white h-2 w-6 text-white/20 '
-                                                            : 'bg-white/30  h-2 w-6 hover:bg-white/50 
-                                                            }`}
-                                                        aria-label={`Go to testimonial ${index + 1}`}
-                                                    >
-                                                    </button>
-                                                ))
-                                            }
+                                        <div className="flex gap-1 text-yellow-500 bg-yellow-500/5 px-3 py-1 rounded-full border border-yellow-500/10">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className={`w-3 h-3 ${i < testimonial.rating ? 'fill-current' : 'opacity-30'}`} />
+                                            ))}
                                         </div>
+                                    </div>
 
+                                    {/* Quote Text */}
+                                    <p className="text-white/80 text-lg italic leading-relaxed mb-8 min-h-[100px]">
+                                        "{testimonial.quote}"
+                                    </p>
 
-                                               <button
-                                                        onClick={prevTimonial}
-                                                        className={`transition-all duration-300 ${index === currentIndex
-                                                            ? 'bg-white h-2 w-6 text-white/20 '
-                                                            : 'bg-white/30  h-2 w-6 hover:bg-white/50 
-                                                            }`}
-                                                        aria-label="Previous testimonials"
+                                    {/* Footer: User Details */}
+                                    <div className="pt-6 border-t border-white/5">
+                                        <h4 className="font-bold text-white text-lg">{testimonial.name}</h4>
+                                        <p className="text-primary text-sm font-medium">{testimonial.role} @ {testimonial.institution}</p>
+                                    </div>
 
-                                                    >
-                                             <ChevronLeft className="w-5 h-5" />
-
-                                                    </button>
-<button
-                                                onClick={nextTestimonial}
-                                                
-                                                className={`absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentIndex >= filteredProjects.length - 3
-                                                    ? 'bg-white/5 text-white/20 cursor-not-allowed'
-                                                    : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
-                                                    }`}
-                                                aria-label="Next testimonial"
-                                            >
-                                                <ChevronRight className="w-5 h-5" />
-                                            </button
-
-                                                ))
-                                            }
+                                    {/* Stats Badge - Optional Dynamic Info */}
+                                    {testimonialStats[index % 3] && (
+                                        <div className="absolute top-8 right-8 opacity-5 text-4xl font-black italic select-none">
+                                            {testimonialStats[index % 3].value}
                                         </div>
-                                        
-
-                               
-                                
+                                    )}
+                                </div>
                             </div>
-                        </FadeIn>
+                        ))}
                     </div>
-            
-                </section>
-                );
-}
 
-                export default Testimonials
+                    {/* Pagination Dots */}
+                    <div className="flex justify-center gap-3 mt-8">
+                        {testimonials.map((_, index) => (
+                            <button
+                                key={index}
+                                onClick={() => scrollToIndex(index)}
+                                className={`transition-all duration-500 rounded-full ${
+                                    index === currentIndex
+                                        ? 'bg-primary w-10 h-2'
+                                        : 'bg-white/20 w-2 h-2 hover:bg-white/40'
+                                }`}
+                                aria-label={`Go to slide ${index + 1}`}
+                            />
+                        ))}
+                    </div>
+                </div>
+            </div>
+        </section>
+    );
+};
+
+export default Testimonials;
