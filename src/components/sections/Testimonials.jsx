@@ -35,7 +35,7 @@ const Projects = () => {
         scrollToIndex(newIndex);
     };
 
-    const prevtestimonials = () => {
+    const prevTimonial = () => {
         const newIndex = Math.max(currentIndex - 1 + testimonials.length) % testimonials.length;
         scrollToIndex(newIndex);
     };
@@ -163,64 +163,81 @@ const Testimonials = () => {
                                                                 {testimonial.name}
                                                             </div>
                                                             <div className="">
-                                                            
-                                                                    {testimonial.role} , {testimonial.institution}
-                                                                
 
-                                                                {/* Navigation Arrows */}
-                                                                {
-                                                                    filteredProjects.length > 3 && (
-                                                                        <>
-                                                                            <button
-                                                                                onClick={prevtestimonials}
-                                                                                disabled={currentIndex === 0}
-                                                                                className={`absolute top-1/2 -left-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentIndex === 0
-                                                                                    ? 'bg-white/5 text-white/20 cursor-not-allowed'
-                                                                                    : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
-                                                                                    }`}
-                                                                                aria-label="Previous projects"
-                                                                            >
-                                                                                <ChevronLeft className="w-5 h-5" />
-                                                                            </button>
-
-                                                                            <button
-                                                                                onClick={testimonials}
-                                                                                disabled={currentIndex >= filteredProjects.length - 3}
-                                                                                className={`absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentIndex >= filteredProjects.length - 3
-                                                                                    ? 'bg-white/5 text-white/20 cursor-not-allowed'
-                                                                                    : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
-                                                                                    }`}
-                                                                                aria-label="Next projects"
-                                                                            >
-                                                                                <ChevronRight className="w-5 h-5" />
-                                                                            </button>
-                                                                        </>
-                                                                    )
-                                                                }
-
-                                                                {/* Navigation Dots */}
-                                                                {
-                                                                    filteredProjects.length > 3 && (
-                                                                        <div className="flex justify-center gap-2 mt-8">
-                                                                            {Array.from({ length: Math.max(0, filteredProjects.length - 2) }).map((_, index) => (
-                                                                                <button
-                                                                                    key={index}
-                                                                                    onClick={() => scrollToIndex(index)}
-                                                                                    className={`transition-all duration-300 rounded-full ${index === currentIndex
-                                                                                        ? 'bg-primary w-6 h-2'
-                                                                                        : 'bg-white/20 w-2 h-2 hover:bg-white/50'
-                                                                                        }`}
-                                                                                    aria-label={`Go to slide ${index + 1}`}
-                                                                                />
-                                                                            ))}
-                                                                        </div>
-                                                                    )
-                                                                }
+                                                                {testimonial.role} , {testimonial.institution}
                                                             </div>
-                                                        </FadeIn>
+                                                        </div>
+                                                        <div className="">
+                                                            {
+                                                                [...Array(testimonial.rating)].map((_, i) => (
+                                                                    <Star key={i} className="" />
+                                                                ))
+                                                            }
+                                                        </div>
                                                     </div>
-                                                </section>
-                                                );
+                                                </div>
+                                            </div>
+                                        </div>
+                                        ))}
+
+
+
+
+                                        {/*  */}
+                                        <div className="">
+                                            {
+                                                testimonials.map((_, index) => (
+                                                    <button
+                                                        onClick={() => scrollToIndex(index)}
+                                                        className={`transition-all duration-300 ${index === currentIndex
+                                                            ? 'bg-white h-2 w-6 text-white/20 '
+                                                            : 'bg-white/30  h-2 w-6 hover:bg-white/50 
+                                                            }`}
+                                                        aria-label={`Go to testimonial ${index + 1}`}
+                                                    >
+                                                    </button>
+                                                ))
+                                            }
+                                        </div>
+
+
+                                               <button
+                                                        onClick={prevTimonial}
+                                                        className={`transition-all duration-300 ${index === currentIndex
+                                                            ? 'bg-white h-2 w-6 text-white/20 '
+                                                            : 'bg-white/30  h-2 w-6 hover:bg-white/50 
+                                                            }`}
+                                                        aria-label="Previous testimonials"
+
+                                                    >
+                                             <ChevronLeft className="w-5 h-5" />
+
+                                                    </button>
+<button
+                                                onClick={nextTestimonial}
+                                                
+                                                className={`absolute top-1/2 -right-4 -translate-y-1/2 w-10 h-10 rounded-full flex items-center justify-center transition-all duration-300 ${currentIndex >= filteredProjects.length - 3
+                                                    ? 'bg-white/5 text-white/20 cursor-not-allowed'
+                                                    : 'bg-white/10 text-white hover:bg-primary hover:scale-110 backdrop-blur-sm'
+                                                    }`}
+                                                aria-label="Next testimonial"
+                                            >
+                                                <ChevronRight className="w-5 h-5" />
+                                            </button
+
+                                                ))
+                                            }
+                                        </div>
+                                        
+
+                               
+                                
+                            </div>
+                        </FadeIn>
+                    </div>
+            
+                </section>
+                );
 }
 
-                                                export default Testimonials
+                export default Testimonials
