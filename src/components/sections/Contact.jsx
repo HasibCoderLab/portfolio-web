@@ -73,37 +73,37 @@ const Contact = () => {
                 <div className="">
                     <FadeIn delay={100}>
                         <div className="">
-                            <form onSubmit={handleSubmit} className=''> 
-                        <div>
-                            <lable htmlFor="name" className="" > 
-                                Name 
-                                </lable>
-                                <input 
-                                type="text"
-                                id="name"
-                                name='name'
-                                value={formData.name}
-                                onChange={handleChange}
-                                className=''
-                                placeholder='Your Name'
-                                />
+                            <form onSubmit={handleSubmit} className=''>
+                                <div>
+                                    <lable htmlFor="name" className="" >
+                                        Name
+                                    </lable>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name='name'
+                                        value={formData.name}
+                                        onChange={handleChange}
+                                        className=''
+                                        placeholder='Your Name'
+                                    />
                                 </div>
 
                                 {/* Email */}
 
-                                 <div>
-                            <lable htmlFor="name" className="" > 
-                                Name 
-                                </lable>
-                                <input 
-                                type="email"
-                                id="name"
-                                name='name'
-                                value={formData.email}
-                                onChange={handleChange}
-                                className=''
-                                placeholder='Your email'
-                                />
+                                <div>
+                                    <lable htmlFor="email" className="" >
+                                        Email
+                                    </lable>
+                                    <input
+                                        type="email"
+                                        id="name"
+                                        name='name'
+                                        value={formData.email}
+                                        onChange={handleChange}
+                                        className=''
+                                        placeholder='Your email'
+                                    />
                                 </div>
 
 
@@ -111,26 +111,51 @@ const Contact = () => {
                                 {/* Message */}
 
 
-                                 <div>
-                            <lable htmlFor="name" className="" > 
-                                Name 
-                                </lable>
-                                <input 
-                                type="text"
-                                id="name"
-                                name='name'
-                                value={formData.message}
-                                onChange={handleChange}
-                                className=''
-                                placeholder='Your message'
-                                />
+                                <div>
+                                    <lable htmlFor="message" className="" >
+                                        Message
+                                    </lable>
+                                    <input
+                                        type="text"
+                                        id="name"
+                                        name='name'
+                                        value={formData.message}
+                                        onChange={handleChange}
+                                        className=''
+                                        placeholder='Your message'
+                                    />
                                 </div>
+                                {/* Btn */}
+                                <button
+                                    type='submit'
+                                    className=''
 
+                                >
+                                    <span> Send Mesaage</span>
+                                    <Send className="" />
+                                </button>
+
+                                {
+                                    status.message && (
+                                        <div className={`p-4 eounded-xl ${status.target === 'success'
+                                            ? 'bg-green-500/10 border border-green-500/20 text-green-400'
+                                            : 'bg-red-500/10 border border-red-500/20 text-red-400'
+                                            }`}>
+                                            {status.message}
+                                        </div>
+
+                                    )
+                                }
+                            </form>
                         </div>
                     </FadeIn>
-               
+                </div>
+            </div>
+        </section>
 
-                )
+
+
+    )
 }
 
-                export default Contact
+export default Contact
