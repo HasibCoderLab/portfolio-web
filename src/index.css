@@ -127,10 +127,6 @@ transform: rotate(360deg);
   animation: wave 1.6s ease-out infinite;
 }
 
-.delay-0 {
-  animation-delay: 0s;
-}
-
 .delay-1 {
   animation-delay: 0.4s;
 }
