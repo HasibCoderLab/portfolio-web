@@ -1,7 +1,12 @@
 import React, { useState, useRef } from "react";
-import { Quote, Star, ChevronLeft, ChevronRight, Sparkles } from "lucide-react";
-import { testimonials} from "../../data/testimonials"; 
-
+import {
+    Quote,
+    Star,
+    ChevronLeft,
+    ChevronRight,
+} from "lucide-react";
+import { testimonials as testimonialData } from "../../data/testimonials"; // Alias to avoid conflict
+import FadeIn from "../animations/FadeIn";
 
 const Testimonials = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
@@ -9,17 +14,18 @@ const Testimonials = () => {
 
     const testimonialStats = [
         { value: '3x', label: 'Faster Delivery' },
-        { value: '98%', label: 'Client Satisfaction' },
-        { value: '50+', label: 'Projects Completed' },
-        { value: '100%', label: 'On-Time Delivery' },
-        { value: '5★', label: 'Average Rating' }
+        { value: '99%', label: 'Satisfaction' },
+        { value: '100%', label: 'On-Time' },
+        { value: '5*', label: 'Avg Rating' },
     ];
 
     const scrollToIndex = (index) => {
+        if (index < 0 || index >= testimonialData.length) return;
         setCurrentIndex(index);
         if (scrollContainerRef.current) {
-            const cardWidth = 350 + 24; // card width + gap
-            scrollContainerRef.current.scrollTo({
+            const container = scrollContainerRef.current;
+            const cardWidth = container.querySelector('.testimonial-card').offsetWidth + 24; // width + gap
+            container.scrollTo({
                 left: cardWidth * index,
                 behavior: 'smooth'
             });
@@ -27,127 +33,83 @@ const Testimonials = () => {
     };
 
     const nextTestimonial = () => {
-        const newIndex = (currentIndex + 1) % testimonials.length;
-        scrollToIndex(newIndex);
+        const next = (currentIndex + 1) % testimonialData.length;
+        scrollToIndex(next);
     };
 
     const prevTestimonial = () => {
-        const newIndex = (currentIndex - 1 + testimonials.length) % testimonials.length;
-        scrollToIndex(newIndex);
+        const prev = (currentIndex - 1 + testimonialData.length) % testimonialData.length;
+        scrollToIndex(prev);
     };
 
     return (
-        <section id="testimonial" className="py-20 relative overflow-hidden bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950">
-            {/* Animated Background */}
-            <div className="absolute inset-0 pointer-events-none">
-                <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-b from-blue-500/5 to-transparent" />
-                <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl animate-pulse" />
-                <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1s' }} />
-            </div>
+        <section id="testimonial" className="py-24 relative overflow-hidden bg-[#030712]">
+            {/* Background Aesthetic Elements */}
+            <div className="absolute top-0 left-1/4 w-96 h-96 bg-primary/20 rounded-full blur-[120px] pointer-events-none" />
+            <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-600/10 rounded-full blur-[120px] pointer-events-none" />
 
             <div className="container mx-auto px-4 relative z-10">
-                {/* Header */}
-                <div className="text-center max-w-2xl mx-auto mb-16">
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500/10 to-purple-500/10 border border-blue-500/20 text-blue-400 text-sm mb-6 backdrop-blur-sm">
-                        <Sparkles className="w-4 h-4" />
-                        <span className="font-medium">Testimonials</span>
+                <FadeIn delay={0}>
+                    <div className="text-center max-w-3xl mx-auto mb-16">
+                        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-semibold mb-6">
+                            <Quote className="w-4 h-4 fill-primary" />
+                            <span className="tracking-wider uppercase">Wall of Love</span>
+                        </div>
+                        <h2 className="text-4xl md:text-5xl font-extrabold mb-6 bg-gradient-to-r from-white via-white to-white/40 bg-clip-text text-transparent">
+                            Trusted by forward-thinking teams
+                        </h2>
+                        <p className="text-gray-400 text-lg">
+                            Empowering clients with logical solutions and high-quality craftsmanship.
+                        </p>
                     </div>
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-blue-100 to-purple-200 bg-clip-text text-transparent">
-                        Trusted by Forward-Thinking Teams
-                    </h2>
-                    <p className="text-slate-400 text-lg">Empowering clients with logic and high-quality solutions</p>
-                </div>
+                </FadeIn>
 
-                {/* Testimonials Carousel */}
-                <div className="relative max-w-7xl mx-auto">
-                    <div className="relative group">
-                        {/* Navigation Buttons */}
-                        <button
-                            onClick={prevTestimonial}
-                            className="absolute top-1/2 -left-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-gradient-to-r from-blue-500 to-purple-500 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-blue-500/50 backdrop-blur-sm opacity-0 group-hover:opacity-100"
-                            aria-label="Previous testimonial"
-                        >
-                            <ChevronLeft className="w-6 h-6" />
-                        </button>
-
-                        <button
-                            onClick={nextTestimonial}
-                            className="absolute top-1/2 -right-6 -translate-y-1/2 z-20 w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-blue-500 text-white flex items-center justify-center transition-all duration-300 hover:scale-110 hover:shadow-lg hover:shadow-purple-500/50 backdrop-blur-sm opacity-0 group-hover:opacity-100"
-                            aria-label="Next testimonial"
-                        >
-                            <ChevronRight className="w-6 h-6" />
-                        </button>
-
-                        {/* Scrollable Container */}
+                {/* Main Carousel Wrapper */}
+                <FadeIn delay={0.2}>
+                    <div className="relative max-w-6xl mx-auto">
+                        {/* Scroll Container */}
                         <div
-                            className="flex overflow-x-auto gap-6 pb-8 snap-x snap-mandatory scrollbar-hide scroll-smooth"
+                            className="flex overflow-x-auto gap-6 pb-12 snap-x snap-mandatory scrollbar-hide scroll-smooth no-scrollbar"
                             ref={scrollContainerRef}
-                            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
                         >
-                            {testimonials.map((testimonial, index) => (
+                            {testimonialData.map((testimonial, index) => (
                                 <div
-                                    key={testimonial.id}
-                                    className="w-[350px] flex-shrink-0 snap-start"
+                                    key={testimonial.id || index}
+                                    className="testimonial-card w-full md:w-[450px] flex-shrink-0 snap-center"
                                 >
-                                    <div className="group/card relative h-full">
-                                        {/* Card */}
-                                        <div className="relative h-full rounded-2xl overflow-hidden bg-gradient-to-br from-slate-800/50 to-slate-900/50 border border-slate-700/50 backdrop-blur-sm transition-all duration-500 hover:border-blue-500/50 hover:shadow-2xl hover:shadow-blue-500/20">
-                                            {/* Hover Glow Effect */}
-                                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/0 to-purple-500/0 group-hover/card:from-blue-500/10 group-hover/card:to-purple-500/10 transition-all duration-500" />
-                                            
-                                            {/* Content */}
-                                            <div className="relative p-6">
-                                                {/* Image Section */}
-                                                <div className="relative mb-6">
-                                                    <div className="relative w-20 h-20 mx-auto mb-4">
-                                                        <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-md opacity-50 group-hover/card:opacity-75 transition-opacity duration-500" />
-                                                        <img
-                                                            src={testimonial.image}
-                                                            alt={testimonial.name}
-                                                            className="relative w-full h-full object-cover rounded-full border-2 border-slate-700 transition-transform duration-500 group-hover/card:scale-110 group-hover/card:border-blue-500"
-                                                        />
-                                                    </div>
+                                    <div className="group relative p-8 rounded-3xl bg-white/[0.03] border border-white/10 backdrop-blur-md hover:bg-white/[0.05] transition-all duration-500 h-full flex flex-col">
+                                        
+                                        {/* Floating Quote Icon */}
+                                        <div className="absolute -top-4 -right-4 w-12 h-12 bg-primary rounded-2xl flex items-center justify-center shadow-lg shadow-primary/20 rotate-12 group-hover:rotate-0 transition-transform">
+                                            <Quote className="w-6 h-6 text-white fill-white/20" />
+                                        </div>
 
-                                                    {/* Stats Badge */}
-                                                    <div className="absolute -top-2 -right-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full p-3 shadow-lg shadow-blue-500/30 animate-pulse">
-                                                        <div className="text-center">
-                                                            <div className="text-sm font-bold text-white">
-                                                                {testimonialStats[index]?.value}
-                                                            </div>
-                                                            <div className="text-xs text-white/80 whitespace-nowrap">
-                                                                {testimonialStats[index]?.label}
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
+                                        {/* Content */}
+                                        <div className="flex gap-1 mb-4">
+                                            {[...Array(5)].map((_, i) => (
+                                                <Star key={i} className={`w-4 h-4 ${i < (testimonial.rating || 5) ? 'fill-yellow-500 text-yellow-500' : 'text-gray-600'}`} />
+                                            ))}
+                                        </div>
 
-                                                {/* Quote */}
-                                                <div className="mb-6">
-                                                    <Quote className="w-8 h-8 text-blue-500/50 mb-3" />
-                                                    <p className="text-slate-300 text-base leading-relaxed italic">
-                                                        {testimonial.quote}
-                                                    </p>
-                                                </div>
+                                        <p className="text-gray-300 text-lg italic leading-relaxed mb-8 flex-grow">
+                                            "{testimonial.quote}"
+                                        </p>
 
-                                                {/* Author Info */}
-                                                <div className="mb-4">
-                                                    <div className="text-white font-semibold text-lg mb-1">
-                                                        {testimonial.name}
-                                                    </div>
-                                                    <div className="text-slate-400 text-sm">
-                                                        {testimonial.role}, {testimonial.institution}
-                                                    </div>
+                                        {/* User Info */}
+                                        <div className="flex items-center gap-4 border-t border-white/5 pt-6">
+                                            <div className="relative">
+                                                <div className="w-14 h-14 rounded-full overflow-hidden border-2 border-primary/30">
+                                                    <img
+                                                        src={testimonial.image || "/api/placeholder/100/100"}
+                                                        alt={testimonial.name}
+                                                        className="w-full h-full object-cover"
+                                                    />
                                                 </div>
-
-                                                {/* Rating */}
-                                                <div className="flex gap-1">
-                                                    {[...Array(testimonial.rating)].map((_, i) => (
-                                                        <Star
-                                                            key={i}
-                                                            className="w-4 h-4 fill-yellow-400 text-yellow-400"
-                                                        />
-                                                    ))}
-                                                </div>
+                                                <div className="absolute -bottom-1 -right-1 bg-green-500 w-4 h-4 rounded-full border-2 border-[#030712]" />
+                                            </div>
+                                            <div>
+                                                <h4 className="font-bold text-white text-lg leading-tight">{testimonial.name}</h4>
+                                                <p className="text-primary text-sm font-medium">{testimonial.role} @ {testimonial.institution}</p>
                                             </div>
                                         </div>
                                     </div>
@@ -155,23 +117,50 @@ const Testimonials = () => {
                             ))}
                         </div>
 
-                        {/* Pagination Dots */}
-                        <div className="flex justify-center gap-2 mt-8">
-                            {testimonials.map((_, index) => (
-                                <button
-                                    key={index}
-                                    onClick={() => scrollToIndex(index)}
-                                    className={`transition-all duration-300 rounded-full ${
-                                        index === currentIndex
-                                            ? 'bg-gradient-to-r from-blue-500 to-purple-500 w-8 h-2'
-                                            : 'bg-slate-700 w-2 h-2 hover:bg-slate-600'
-                                    }`}
-                                    aria-label={`Go to testimonial ${index + 1}`}
-                                />
-                            ))}
+                        {/* Navigation Controls */}
+                        <div className="flex flex-col md:flex-row items-center justify-between gap-8 mt-4 px-4">
+                            {/* Stats */}
+                            <div className="flex gap-8 overflow-x-auto pb-2">
+                                {testimonialStats.map((stat, i) => (
+                                    <div key={i} className="text-center md:text-left">
+                                        <div className="text-xl font-bold text-white leading-none">{stat.value}</div>
+                                        <div className="text-[10px] uppercase tracking-widest text-gray-500 mt-1">{stat.label}</div>
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Arrows & Pagination */}
+                            <div className="flex items-center gap-6">
+                                <div className="flex gap-2">
+                                    {testimonialData.map((_, index) => (
+                                        <button
+                                            key={index}
+                                            onClick={() => scrollToIndex(index)}
+                                            className={`h-1.5 rounded-full transition-all duration-500 ${
+                                                index === currentIndex ? 'w-8 bg-primary' : 'w-2 bg-white/20 hover:bg-white/40'
+                                            }`}
+                                        />
+                                    ))}
+                                </div>
+                                
+                                <div className="flex gap-3">
+                                    <button
+                                        onClick={prevTestimonial}
+                                        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group"
+                                    >
+                                        <ChevronLeft className="w-5 h-5 text-white group-hover:scale-110" />
+                                    </button>
+                                    <button
+                                        onClick={nextTestimonial}
+                                        className="w-12 h-12 rounded-full border border-white/10 flex items-center justify-center hover:bg-primary hover:border-primary transition-all group"
+                                    >
+                                        <ChevronRight className="w-5 h-5 text-white group-hover:scale-110" />
+                                    </button>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </FadeIn>
             </div>
         </section>
     );
