@@ -1,5 +1,5 @@
 import React, { useState, useRef } from "react";
-// FIX 1: 'Global' এর বদলে 'Globe' ইমপোর্ট করা হয়েছে
+
 import { Briefcase, Sparkles, Target, Globe, Palette, Zap, ChevronLeft, ChevronRight } from "lucide-react";
 import { projects, categories } from '../../data/projects'; 
 import FadeIn from "../animations/FadeIn";
@@ -52,7 +52,6 @@ const Projects = () => {
         'JavaScript': Zap,
         'TypeScript': Sparkles,
         'Frontend': Palette,
-        // FIX 2: এখানে 'Global' এর বদলে 'Globe' ব্যবহার করা হয়েছে
         'Next.js': Globe, 
     };
 

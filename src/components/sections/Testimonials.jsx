@@ -11,22 +11,37 @@ import FadeIn from "../animations/FadeIn";
 import ProjectCard from "../ui/Card";
 
 const Projects = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollContainerRef = useRef(null);
+ 
 
-  const scrollToIndex = (index) =>{
-    setCurrentIndex(index);
+
+    const [currentIndex, setCurrentIndex] = useState(0);
+    const scrollContainerRef = useRef(null);
+
+
     const scrollToIndex = (index) => {
         setCurrentIndex(index);
         if (scrollContainerRef.current) {
-            const container = scrollContainerRef.current;
-            const cardWidth = container.offsetWidth / 3; 
-            container.scrollTo({
+            const cardWidth = scrollContainerRef.current.offsetWidth;
+
+            scrollContainerRef.current.scrollTo({
                 left: cardWidth * index,
                 behavior: 'smooth'
-            })
-        }
-  }
+            });
+        };
+    };
+
+    const testimonials = () => {
+    
+        const newIndex = Math.min(currentIndex + 1) % testimonials.length;
+        scrollToIndex(newIndex);
+    };
+
+    const prevtestimonials = () => {
+        const newIndex = Math.max(currentIndex - 1 + testimonials.length) % testimonials.length;
+        scrollToIndex(newIndex);
+    };
+
+  
 
   };
 const Testimonials = () => {
