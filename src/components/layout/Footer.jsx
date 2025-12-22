@@ -6,114 +6,86 @@ import {
   Mail,
   MapPin,
   Heart,
-  ArrowUpRight,
+  ExternalLink
 } from "lucide-react";
 import { PERSONAL_INFO, SOCIAL_LINKS, NAV_LINKS } from "../../utils/constants";
 import FadeIn from "../animations/FadeIn";
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
-  const socialIcons = [
-    { Icon: Github, href: SOCIAL_LINKS.github, label: 'Github' },
-    { Icon: Linkedin, href: SOCIAL_LINKS.linkedin, label: 'LinkedIn' },
-    { Icon: Twitter, href: SOCIAL_LINKS.twitter, label: 'Twitter' },
-  ];
-
   return (
-    <footer className="relative pt-24 pb-12 overflow-hidden bg-[#030712]">
-      {/* Aesthetic Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
-      <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
-
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-20">
+    <footer className="mt-2 py-20 border-t border-white/5 bg-[#030712]">
+      <div className="container mx-auto px-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-16">
           
-          {/* Brand Section */}
-          <FadeIn delay={0} className="lg:col-span-2">
-            <div className="space-y-6">
-              <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-white/50 bg-clip-text text-transparent tracking-tighter">
-                {PERSONAL_INFO.name.split(' ')[0]}<span className="text-primary">.</span>
-              </h3>
-              <p className="text-white/50 text-lg max-w-sm leading-relaxed font-light">
-                {PERSONAL_INFO.tagline || "Building digital experiences that merge art with logic."}
-              </p>
-              
-              <div className="flex gap-4">
-                {socialIcons.map((social, i) => (
-                  <a
-                    key={i}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="group relative w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center transition-all duration-300 hover:bg-primary hover:border-primary hover:-translate-y-1"
-                  >
-                    <social.Icon className="w-5 h-5 text-white/60 group-hover:text-white transition-colors" />
-                  </a>
-                ))}
-              </div>
-            </div>
-          </FadeIn>
-
-          {/* Quick Links */}
+          {/* Left Side: Info */}
           <FadeIn delay={100}>
             <div className="space-y-6">
-              <h4 className="text-white font-bold uppercase tracking-widest text-xs">Navigation</h4>
-              <ul className="space-y-4">
-                {NAV_LINKS?.map((link) => (
-                  <li key={link.name}>
-                    <a 
-                      href={link.href} 
-                      className="text-white/40 hover:text-primary transition-colors flex items-center gap-1 group"
-                    >
-                      {link.name}
-                      <ArrowUpRight className="w-3 h-3 opacity-0 -translate-y-1 translate-x-1 group-hover:opacity-100 group-hover:translate-y-0 group-hover:translate-x-0 transition-all" />
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </FadeIn>
+              <div>
+                <h3 className="text-3xl font-bold bg-gradient-to-r from-white to-gray-400 bg-clip-text text-transparent">
+                  {PERSONAL_INFO.name.split(' ')[1]}
+                </h3>
+                <p className="text-gray-400 mt-2 max-w-md leading-relaxed">
+                  {PERSONAL_INFO.tagline}
+                </p>
+              </div>
 
-          {/* Contact Info */}
-          <FadeIn delay={200}>
-            <div className="space-y-6">
-              <h4 className="text-white font-bold uppercase tracking-widest text-xs">Keep in Touch</h4>
               <div className="space-y-4">
-                <a href={`mailto:${PERSONAL_INFO.email}`} className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-primary/10 group-hover:border-primary/50 transition-all">
-                    <Mail className="w-4 h-4 text-primary" />
+                {/* Email */}
+                <a 
+                  href={`mailto:${PERSONAL_INFO.email}`} 
+                  className="flex items-center gap-4 group"
+                >
+                  <div className="p-2.5 bg-gray-900 border border-white/10 rounded-xl group-hover:border-cyan-500/50 transition-colors">
+                    <Mail className="w-5 h-5 text-cyan-400" />
                   </div>
-                  <span className="text-white/50 group-hover:text-white transition-colors text-sm truncate">
+                  <span className="text-gray-300 group-hover:text-cyan-400 transition-colors">
                     {PERSONAL_INFO.email}
                   </span>
                 </a>
-                <div className="flex items-center gap-3 group">
-                  <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center">
-                    <MapPin className="w-4 h-4 text-primary" />
+
+                {/* Location */}
+                <div className="flex items-center gap-4 group">
+                  <div className="p-2.5 bg-gray-900 border border-white/10 rounded-xl">
+                    <MapPin className="w-5 h-5 text-emerald-400" />
                   </div>
-                  <span className="text-white/50 text-sm">
+                  <span className="text-gray-300">
                     {PERSONAL_INFO.location}
                   </span>
                 </div>
               </div>
             </div>
           </FadeIn>
+
+          {/* Right Side: Quick Links or Socials */}
+          <FadeIn delay={300}>
+            <div className="flex flex-col md:items-end justify-center">
+               <div className="flex gap-4">
+                  {/* Example Social Icon Style */}
+                  <a href={SOCIAL_LINKS.github} className="p-3 bg-gray-900 border border-white/10 rounded-2xl hover:border-cyan-500/50 hover:scale-110 transition-all">
+                    <Github className="w-6 h-6 text-gray-400 hover:text-white" />
+                  </a>
+                  <a href={SOCIAL_LINKS.linkedin} className="p-3 bg-gray-900 border border-white/10 rounded-2xl hover:border-cyan-500/50 hover:scale-110 transition-all">
+                    <Linkedin className="w-6 h-6 text-gray-400 hover:text-white" />
+                  </a>
+               </div>
+            </div>
+          </FadeIn>
         </div>
 
         {/* Bottom Bar */}
-        <FadeIn delay={300}>
-          <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
-            <div className="space-y-1">
-              <p className="text-white/30 text-sm tracking-wide">
-                © {currentYear} <span className="text-white/60 font-medium">{PERSONAL_INFO.name}</span>. All rights reserved.
-              </p>
-            </div>
+        <FadeIn delay={500}>
+          <div className="pt-8 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
+            <p className="text-gray-500 text-sm">
+              © {new Date().getFullYear()} <span className="text-gray-300">{PERSONAL_INFO.name}</span>. All Rights Reserved.
+            </p>
             
-            <div className="flex items-center gap-2 text-white/30 text-sm">
-              <span>Made with</span>
-              <Heart className="w-4 h-4 text-red-500 fill-red-500 animate-pulse" />
-              <span>using <span className="text-white/60 font-medium">React & Tailwind</span></span>
+            <div className="flex items-center gap-2 text-sm text-gray-500">
+              <span>Built with</span>
+              <Heart className="w-4 h-4 text-red-500 fill-red-500" />
+              <span>using</span>
+              <span className="px-2 py-0.5 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-400 text-xs">
+                React & Tailwind
+              </span>
             </div>
           </div>
         </FadeIn>
