@@ -23,7 +23,7 @@ const Footer = () => {
   return (
     <footer className="relative pt-24 pb-12 overflow-hidden bg-[#030712]">
       {/* Aesthetic Background Elements */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
       <div className="absolute -bottom-24 -left-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px]" />
 
       <div className="container mx-auto px-4 relative z-10">
