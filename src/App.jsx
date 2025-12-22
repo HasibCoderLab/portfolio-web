@@ -7,6 +7,7 @@ import Projects from './components/sections/Projects'
 import Services from './components/sections/Services'
 import Testimonials from './components/sections/Testimonials'
 import Contact from './components/sections/Contact'
+import Footer from './components/layout/Footer'
 
 
 
@@ -26,6 +27,7 @@ const App = () => {
         <Testimonials />
         <Contact />
       </main>
+      <Footer/>
     </div>
   )
 }
